@@ -1,4 +1,5 @@
 - hosts: localhost
+
   tasks:
     - name: Load Demo Vars
       include_vars: 'properties/storage_system_properties.yml'
@@ -69,3 +70,28 @@
         storage_system_password="{{ storage_system_password }}"
         state=absent
         snapshot_name="my_ansible_base_volume"
+
+    - name: Create Schedule my_ansible_schedule
+      hpe3par_snapshot:
+        storage_system_ip="{{ storage_system_ip }}"
+        storage_system_username="{{ storage_system_username }}"
+        storage_system_password="{{ storage_system_password }}"
+        state=schedule_create
+        schedule_name="my_ansible_schedule"
+        snapshot_name="snap-"
+        base_volume_name="volume_ansible_a"
+        read_only=True
+        expiration_time=3
+        retention_time=3
+        expiration_unit="Hours"
+        retention_unit="Hours"
+        task_freq="hourly"
+
+    - name: Delete Schedule my_ansible_schedule
+      hpe3par_snapshot:
+        storage_system_ip="{{ storage_system_ip }}"
+        storage_system_username="{{ storage_system_username }}"
+        storage_system_password="{{ storage_system_password }}"
+        state=schedule_delete
+        schedule_name="my_ansible_schedule"
+
