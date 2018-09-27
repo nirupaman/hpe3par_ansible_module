@@ -478,7 +478,7 @@ null",
         return (
             False,
             False,
-            "Snapshot create failed. Snapshot name is null",
+            "Schedule create failed. Snapshot name is null",
             {})
     if len(schedule_name) < 1 or len(schedule_name) > 31:
         return (False, False, "Schedule creation failed. Schedule name must be atleast 1 character and not more than 31 characters", {})
