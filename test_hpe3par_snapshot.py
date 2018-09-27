@@ -94,10 +94,6 @@ class TestHpe3parSnapshot(unittest.TestCase):
             "type": "str"
         },
         "task_freq": {
-            "type": "str",
-            "choices": ['yearl', 'monthly', 'weekly', 'daily', 'hourly']
-        },
-        "task_freq_custom": {
             "type": "str"
         }
 
@@ -128,9 +124,7 @@ class TestHpe3parSnapshot(unittest.TestCase):
             'rm_exp_time': False,
             'state': 'present',
             'schedule_name': 'test_schedule',
-            'task_freq': 'hourly',
-            'task_freq_custom': '0 * * * *'
-
+            'task_freq': '0 * * * *'
         }
 
         mock_module.params = PARAMS_FOR_PRESENT
@@ -166,8 +160,7 @@ class TestHpe3parSnapshot(unittest.TestCase):
             'rm_exp_time': None,
             'state': 'present',
             'schedule_name': 'test_schedule',
-            'task_freq': 'hourly',
-            'task_freq_custom': '0 * * * *'
+            'task_freq': '0 * * * *'
         }
         # This creates a instance of the AnsibleModule mock.
         mock_module.params = PARAMS_FOR_PRESENT
@@ -209,8 +202,7 @@ class TestHpe3parSnapshot(unittest.TestCase):
             'rm_exp_time': None,
             'state': 'absent',
             'schedule_name': 'test_schedule',
-            'task_freq': 'hourly',
-            'task_freq_custom': '0 * * * *'
+            'task_freq': '0 * * * *'
         }
         # This creates a instance of the AnsibleModule mock.
         mock_module.params = PARAMS_FOR_PRESENT
@@ -252,8 +244,7 @@ class TestHpe3parSnapshot(unittest.TestCase):
             'rm_exp_time': True,
             'state': 'modify',
             'schedule_name': 'test_schedule',
-            'task_freq': 'hourly',
-            'task_freq_custom': '0 * * * *'
+            'task_freq': '0 * * * *'
         }
         # This creates a instance of the AnsibleModule mock.
         mock_module.params = PARAMS_FOR_PRESENT
@@ -295,8 +286,7 @@ class TestHpe3parSnapshot(unittest.TestCase):
             'rm_exp_time': None,
             'state': 'restore_offline',
             'schedule_name': 'test_schedule',
-            'task_freq': 'hourly',
-            'task_freq_custom': '0 * * * *'
+            'task_freq': '0 * * * *'
         }
         # This creates a instance of the AnsibleModule mock.
         mock_module.params = PARAMS_FOR_PRESENT
@@ -338,8 +328,7 @@ class TestHpe3parSnapshot(unittest.TestCase):
             'rm_exp_time': None,
             'state': 'restore_online',
             'schedule_name': 'test_schedule',
-            'task_freq': 'hourly',
-            'task_freq_custom': '0 * * * *'
+            'task_freq': '0 * * * *'
         }
         # This creates a instance of the AnsibleModule mock.
         mock_module.params = PARAMS_FOR_PRESENT
@@ -381,8 +370,7 @@ class TestHpe3parSnapshot(unittest.TestCase):
             'rm_exp_time': None,
             'state': 'schedule_create',
             'schedule_name': 'test_schedule',
-            'task_freq': 'hourly', 
-            'task_freq_custom': '0 * * * *' 
+            'task_freq': '0 * * * *' 
         }
         # This creates a instance of the AnsibleModule mock.
         mock_module.params = PARAMS_FOR_PRESENT
@@ -424,8 +412,7 @@ class TestHpe3parSnapshot(unittest.TestCase):
             'rm_exp_time': None,
             'state': 'schedule_delete',
             'schedule_name': 'test_schedule',
-            'task_freq': 'hourly',
-            'task_freq_custom': '0 * * * *'
+            'task_freq': '0 * * * *'
         }
         # This creates a instance of the AnsibleModule mock.
         mock_module.params = PARAMS_FOR_PRESENT
@@ -649,7 +636,7 @@ null", {}))
                                                           10,
                                                           'Hours',
                                                           'Days',
-	                                                  'hourly',''
+	                                                  'hourly'
                                                           ), (True, True, "Created Schedule %s successfully." % 'test_schedule', {}))
 
         mock_client.HPE3ParClient.volumeExists.return_value = False
@@ -665,7 +652,7 @@ null", {}))
                                                           10,
                                                           'Hours',
                                                           'Days',
-                                                          'hourly',''
+                                                          'hourly'
                                                           ), (True, False, "Volume does not Exist", {}))
              
         mock_client.HPE3ParClient.volumeExists.return_value = True
@@ -681,7 +668,7 @@ null", {}))
                                                           10,
                                                           'Hours',
                                                           'Days',
-                                                          'hourly',''
+                                                          '0 * * * *'
                                                           ), (False, False, "Schedule creation failed. Storage system username or password is null", {}))
 
         self.assertEqual(hpe3par_snapshot.create_schedule(mock_client.HPE3ParClient,
@@ -696,7 +683,7 @@ null", {}))
                                                           10,
                                                           'Hours',
                                                           'Days',
-							  'hourly',''
+							  '0 * * * *'
                                                           ), (False, False, "Schedule create failed. Schedule name is null", {}))
 
         self.assertEqual(hpe3par_snapshot.create_schedule(mock_client.HPE3ParClient,
@@ -711,7 +698,7 @@ null", {}))
                                                           10,
                                                           'Hours',
                                                           'Days',
-                                                          'hourly',''
+                                                          '0 * * * *'
                                                           ), (False, False, "Schedule create failed. Snapshot name is null", {}))
         self.assertEqual(hpe3par_snapshot.create_schedule(mock_client.HPE3ParClient,
                                                           '192.168.0.1',
@@ -725,7 +712,7 @@ null", {}))
                                                           10,
                                                           'Hours',
                                                           'Days',
-                                                          'hourly',''
+                                                          '0 * * * *'
                                                           ), (False, False, "Schedule create failed. Base volume name is null", {}))
 
     @mock.patch('Modules.hpe3par_snapshot.client')

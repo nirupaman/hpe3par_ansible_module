@@ -460,7 +460,7 @@ def create_schedule(
         retention_time,
         expiration_unit,
         retention_unit,
-        task_freq):
+        task_freq, task_freq_custom):
     if storage_system_username is None or storage_system_password is None:
         return (
             False,
@@ -509,11 +509,14 @@ null",
               snap_string = ".@y@@m@@d@@H@@M@@S@"
               cmd.append("snap-"+base_volume_name+snap_string)
               cmd.append(base_volume_name+"\"")
-              if '*' not in task_freq:
-                  task_freq='@'+task_freq
+              if task_freq_custom:
+                 freq = task_freq_custom
+                 
+              if task_freq:
+                  freq='@'+task_freq
               cmd = ' '.join(cmd)  
               client_obj.createSchedule(
-                schedule_name, cmd, task_freq)
+                schedule_name, cmd, freq)
         else:
             return (True, False, "Volume does not Exist", {})
     except Exception as e:
@@ -639,7 +642,11 @@ def main():
             "type": "str"
         },
         "task_freq": {
-            "type": "str"
+            "type": "str",
+            "choices": ['yearl', 'monthly', 'weekly', 'daily', 'hourly']
+        },
+        "task_freq_custom": {
+            "type": "str"           
         }
 
     }
@@ -667,6 +674,7 @@ def main():
     rm_exp_time = module.params["rm_exp_time"]
     schedule_name = module.params["schedule_name"]
     task_freq = module.params["task_freq"]
+    task_freq_custom = module.params["task_freq_custom"]
 
 
     wsapi_url = 'https://%s:8080/api/v1' % storage_system_ip
@@ -700,7 +708,7 @@ def main():
     elif module.params["state"] == "schedule_create":        
         return_status, changed, msg, issue_attr_dict = create_schedule(
             client_obj, storage_system_ip, storage_system_username, storage_system_password,
-            schedule_name, snapshot_name, base_volume_name, read_only, expiration_time, retention_time, expiration_unit, retention_unit, task_freq)
+            schedule_name, snapshot_name, base_volume_name, read_only, expiration_time, retention_time, expiration_unit, retention_unit, task_freq, task_freq_custom)
     elif module.params["state"] == "schedule_delete":
         return_status, changed, msg, issue_attr_dict = delete_schedule(
             client_obj, storage_system_ip, storage_system_username, storage_system_password,
