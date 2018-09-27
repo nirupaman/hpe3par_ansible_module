@@ -499,7 +499,7 @@ null",
         expirationHours = convert_to_hours(expiration_time, expiration_unit)
 	retentionHours = convert_to_hours(retention_time, retention_unit)
         if client_obj.volumeExists(base_volume_name):
-           cmd = ["\"createsv"] 
+           cmd = ["createsv"] 
 	   if read_only:
               cmd.append("-ro")
               cmd.append("-exp")
@@ -508,7 +508,7 @@ null",
               cmd.append(str(retentionHours))
               snap_string = ".@y@@m@@d@@H@@M@@S@"
               cmd.append("snap-"+base_volume_name+snap_string)
-              cmd.append(base_volume_name+"\"")
+              cmd.append(base_volume_name)
               if task_freq_custom:
                  freq = task_freq_custom
                  
