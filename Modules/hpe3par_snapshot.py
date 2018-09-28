@@ -498,12 +498,12 @@ null",
         client_obj.setSSHOptions(storage_system_ip, storage_system_username, storage_system_password)
         expirationHours = convert_to_hours(expiration_time, expiration_unit)
 	retentionHours = convert_to_hours(retention_time, retention_unit)
-        if client_obj.volumeExists(base_volume_name):
-           cmd = ["createsv"] 
-	   if read_only:
+        if not client_obj.scheduleExists(schedule_name):
+           cmd = ["createsv"]
+           if read_only:
               cmd.append("-ro")
               cmd.append("-exp")
-              cmd.append(str(expirationHours))        
+              cmd.append(str(expirationHours))
               cmd.append("-retain")
               cmd.append(str(retentionHours))
               snap_string = ".@y@@m@@d@@H@@M@@S@"
@@ -511,16 +511,16 @@ null",
               cmd.append(base_volume_name)
               if task_freq_custom:
                  freq = task_freq_custom
-                 
+
               if task_freq:
-                  freq='@'+task_freq
-              cmd = ' '.join(cmd)  
+                  freq="@"+task_freq
+              cmd = ' '.join(cmd)
               client_obj.createSchedule(
                 schedule_name, cmd, freq)
         else:
-            return (True, False, "Volume does not Exist", {})
+            return (True, False, "Schedule not Exist", {})
     except Exception as e:
-        return (False, False, "Schedule creation failed | %s" % (e), {})
+        return (False, "False", "Schedule creation failed | %s" % (e), {})
     finally:
         client_obj.logout()
     return (

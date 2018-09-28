@@ -634,7 +634,7 @@ null", {}))
     @mock.patch('Modules.hpe3par_snapshot.client')
     def test_create_schedule(self, mock_client):
         mock_client.HPE3ParClient.login.return_value = None
-        mock_client.HPE3ParClient.volumeExists.return_value = True
+        mock_client.HPE3ParClient.scheduleExists.return_value = False
         mock_client.HPE3ParClient.createSchedule.return_value = None
         mock_client.HPE3ParClient.logout.return_value = None
         self.assertEqual(hpe3par_snapshot.create_schedule(mock_client.HPE3ParClient,
@@ -652,7 +652,7 @@ null", {}))
 	                                                  'hourly',''
                                                           ), (True, True, "Created Schedule %s successfully." % 'test_schedule', {}))
 
-        mock_client.HPE3ParClient.volumeExists.return_value = False
+        mock_client.HPE3ParClient.scheduleExists.return_value = True
         self.assertEqual(hpe3par_snapshot.create_schedule(mock_client.HPE3ParClient,
                                                           '192.168.0.1',
                                                           'USER',
@@ -666,9 +666,9 @@ null", {}))
                                                           'Hours',
                                                           'Days',
                                                           'hourly',''
-                                                          ), (True, False, "Volume does not Exist", {}))
-             
-        mock_client.HPE3ParClient.volumeExists.return_value = True
+                                                          ), (True, False, "Schedule not Exist", {}))
+        
+        mock_client.HPE3ParClient.scheduleExists.return_value = True
         self.assertEqual(hpe3par_snapshot.create_schedule(mock_client.HPE3ParClient,
                                                           '192.168.0.1',
                                                           'USER',
@@ -727,7 +727,7 @@ null", {}))
                                                           'Days',
                                                           'hourly',''
                                                           ), (False, False, "Schedule create failed. Base volume name is null", {}))
-
+       
     @mock.patch('Modules.hpe3par_snapshot.client')
     def test_delete_schedule(self, mock_client):
         mock_client.HPE3ParClient.login.return_value = None
