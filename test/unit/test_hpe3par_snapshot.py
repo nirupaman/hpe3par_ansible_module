@@ -649,6 +649,21 @@ null", {}))
                                                           10,
                                                           'Hours',
                                                           'Days',
+                                                          '0 * * * *',''
+                                                          ), (True, True, "Created Schedule %s successfully." % 'test_schedule', {}))
+
+        self.assertEqual(hpe3par_snapshot.create_schedule(mock_client.HPE3ParClient,
+                                                          '192.168.0.1',
+                                                          'USER',
+                                                          'PASS',
+                                                          'test_schedule',
+                                                          'test_snapshot',
+                                                          'base_volume',
+                                                          True,
+                                                          10,
+                                                          10,
+                                                          'Hours',
+                                                          'Days',
                                                           'hourly',''
                                                           ), (True, True, "Created Schedule %s successfully." % 'test_schedule', {}))
 
@@ -728,20 +743,6 @@ null", {}))
                                                           '0 * * * *',''
                                                           ), (False, False, "Schedule create failed. Base volume name is null", {}))
 
-        self.assertEqual(hpe3par_snapshot.create_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          'test_snapshot',
-                                                          None,
-                                                          True,
-                                                          10,
-                                                          10,
-                                                          'Hours',
-                                                          'Days',
-                                                          '0 * * * *',''
-                                                          ), (True, True, "Schedule create sucessfully", {}))
 
        
     @mock.patch('Modules.hpe3par_snapshot.client')
