@@ -643,7 +643,7 @@ def main():
         },
         "task_freq": {
             "type": "str",
-            "choices": ['yearl', 'monthly', 'weekly', 'daily', 'hourly']
+            "choices": ['yearly', 'monthly', 'weekly', 'daily', 'hourly']
         },
         "task_freq_custom": {
             "type": "str"           
