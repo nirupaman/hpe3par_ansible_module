@@ -681,7 +681,7 @@ null", {}))
                                                           'Hours',
                                                           'Days',
                                                           'hourly',''
-                                                          ), (True, False, "Schedule not Exist", {}))
+                                                          ), (True, False, "Schedule Exist", {}))
         
         mock_client.HPE3ParClient.scheduleExists.return_value = True
         self.assertEqual(hpe3par_snapshot.create_schedule(mock_client.HPE3ParClient,

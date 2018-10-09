@@ -498,6 +498,7 @@ null",
         client_obj.setSSHOptions(storage_system_ip, storage_system_username, storage_system_password)
         expirationHours = convert_to_hours(expiration_time, expiration_unit)
         retentionHours = convert_to_hours(retention_time, retention_unit)
+        freq = "@hourly"
         if not client_obj.volumeExists(base_volume_name):
            return (False, False, "volume not Exist", {})
            
@@ -505,24 +506,25 @@ null",
            cmd = ["createsv"]
            if read_only:
               cmd.append("-ro")
+           if expirationHours != None:
               cmd.append("-exp")
               cmd.append(str(expirationHours)+"h")
-              if retentionHours != None:
+           if retentionHours != None:
                  cmd.append("-retain")
                  cmd.append(str(retentionHours)+"h")
-              snap_string = ".@y@@m@@d@@H@@M@@S@"
-              cmd.append("snap-"+base_volume_name+snap_string)
-              cmd.append(base_volume_name)
-              if task_freq_custom:
+           snap_string = ".@y@@m@@d@@H@@M@@S@"
+           cmd.append("snap-"+base_volume_name+snap_string)
+           cmd.append(base_volume_name)
+           if task_freq_custom:
                  freq = task_freq_custom
 
-              if task_freq:
+           if task_freq:
                   freq="@"+task_freq
-              cmd = ' '.join(cmd)
-              client_obj.createSchedule(
+           cmd = ' '.join(cmd)
+           client_obj.createSchedule(
                 schedule_name, cmd, freq)
         else:
-            return (True, False, "Schedule not Exist", {})
+            return (True, False, "Schedule Exist", {})
     except Exception as e:
         return (False, "False", "Schedule creation failed | %s" % (e), {})
     finally:
