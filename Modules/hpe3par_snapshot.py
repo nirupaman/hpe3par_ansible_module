@@ -499,6 +499,8 @@ null",
         expirationHours = convert_to_hours(expiration_time, expiration_unit)
         retentionHours = convert_to_hours(retention_time, retention_unit)
         freq = "@hourly"
+        if not client_obj.volumeExists(base_volume_name):
+           return (False, False, "volume not Exist", {})
            
         if not client_obj.scheduleExists(schedule_name):
            cmd = ["createsv"]
