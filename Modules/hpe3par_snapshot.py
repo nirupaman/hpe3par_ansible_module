@@ -498,14 +498,18 @@ null",
         client_obj.setSSHOptions(storage_system_ip, storage_system_username, storage_system_password)
         expirationHours = convert_to_hours(expiration_time, expiration_unit)
         retentionHours = convert_to_hours(retention_time, retention_unit)
+        if not client_obj.volumeExists(base_volume_name):
+           return (False, False, "volume not Exist", {})
+           
         if not client_obj.scheduleExists(schedule_name):
            cmd = ["createsv"]
            if read_only:
               cmd.append("-ro")
               cmd.append("-exp")
-              cmd.append(str(expirationHours))
-              cmd.append("-retain")
-              cmd.append(str(retentionHours))
+              cmd.append(str(expirationHours)+"h")
+              if retentionHours != None:
+                 cmd.append("-retain")
+                 cmd.append(str(retentionHours)+"h")
               snap_string = ".@y@@m@@d@@H@@M@@S@"
               cmd.append("snap-"+base_volume_name+snap_string)
               cmd.append(base_volume_name)
