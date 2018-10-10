@@ -498,8 +498,14 @@ null",
         client_obj.setSSHOptions(storage_system_ip, storage_system_username, storage_system_password)
         expirationHours = convert_to_hours(expiration_time, expiration_unit)
         retentionHours = convert_to_hours(retention_time, retention_unit)
+
         freq = "@hourly"
-           
+        if not client_obj.volumeExists(base_volume_name):
+           return (False, False, "volume not Exist", {})
+        
+        if retentionHours > expirationHours:
+           return (False, False, "Expiration time must be greater than or equal to retention time", {})   
+       
         if not client_obj.scheduleExists(schedule_name):
            cmd = ["createsv"]
            if read_only:
