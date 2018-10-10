@@ -502,7 +502,10 @@ null",
         freq = "@hourly"
         if not client_obj.volumeExists(base_volume_name):
            return (False, False, "volume not Exist", {})
-           
+        
+        if retentionHours > expirationHours:
+           return (False, False, "Expiration time must be greater than or equal to retention time", {})   
+       
         if not client_obj.scheduleExists(schedule_name):
            cmd = ["createsv"]
            if read_only:
