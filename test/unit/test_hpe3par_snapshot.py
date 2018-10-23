@@ -820,7 +820,7 @@ null", {}))
                                                           'Hours',
                                                           'Hours',
                                                           '*****'
-                                                          ), (False, False, "Invalid task frequency string", {}))
+                                                          ), (False, False, "The schedule format is <minute> <hour> <dom> <month> <dow> or by hourly daily monthly weekly monthly yearly", {}))
 
         self.assertEqual(hpe3par_snapshot.create_schedule(mock_client.HPE3ParClient,
                                                           '192.168.0.1',
@@ -1196,169 +1196,12 @@ null", {}))
                                                           'USER',
                                                           'PASS',
                                                           'test_schedule',
-                                                          '',
-                                                          '*****'
-                                                          ), (False, False, "Invalid task frequency string", {}))
+                                                          'schedule_new',
+                                                          'hourly'
+                                                          ), (True, True, "Modified Schedule %s successfully." % 'test_schedule', {}))
 
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '0 11-1 * * *'
-                                                          ), (False, False, "Invalid task frequency hours start time should be less than end time", {}))   
-                                                       
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* * 12-1 * *'
-                                                          ), (False, False, "Invalid task frequency day start should be less than end", {}))
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* * * 11-1 *'
-                                                          ), (False, False, "Invalid task frequency month start should be less than end", {}))
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* * * ** *'
-                                                          ), (False, False, "Invalid task frequency string ", {}))
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* * * * 5-1'
-                                                          ), (False, False, "Invalid task frequency day of week start should be less than end", {}))
-
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '99 * * * *'
-                                                          ), (False, False, "Invalid task frequency minutes should be between 0-59", {}))
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '13-10 * * * *'
-                                                          ), (False, False, "Invalid task frequency minutes start time should be less than end time", {}))
-
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '69-70 * * * *'
-                                                          ), (False, False, "Invalid task frequency minutes should be between 0-59", {}))
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* * 32-33 * *'
-                                                          ), (False, False, "Invalid task frequency day should be between 1-31", {}))
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* * * 13-14 *'
-                                                          ), (False, False, "Invalid task frequency month should be between 1-12 ", {}))
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* * * * 7-8'
-                                                          ), (False, False, "Invalid task frequency day of week should be between 0-6", {}))
-
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* 30 * * *'
-                                                          ), (False, False, "Invalid task frequency hours should be between 0-23", {}))
-
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* 30-31 * * *'
-                                                          ), (False, False, "Invalid task frequency hours should be between 0-23 ", {}))
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* * 0 * *'
-                                                          ), (False, False, "Invalid task frequency day should be between 1-31", {}))
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* * * 34 *'
-                                                          ), (False, False, "Invalid task frequency month should be between 1-12", {}))
-
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '* * * * 17'
-                                                          ), (False, False, "Invalid task frequency day of week should be between 0-6", {}))
-
-        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
-                                                          '192.168.0.1',
-                                                          'USER',
-                                                          'PASS',
-                                                          'test_schedule',
-                                                          '',
-                                                          '  * * * 17'
-                                                          ), (False, False, "Invalid task frequency string", {}))
-
-
+        
+        
         mock_client.HPE3ParClient.scheduleExists.return_value = False
         self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
                                                           '192.168.0.1',
@@ -1374,7 +1217,7 @@ null", {}))
                                                           '192.168.0.1',
                                                           'USER',
                                                           None, 
-                                                          'test_schedule',                                                          
+                                                          'test_schedule',                                                   
                                                           '',
                                                           'hourly'
                                                           ), (False, False, "Modify schedule failed. Storage system username or password is null", {}))
@@ -1395,7 +1238,7 @@ null", {}))
                                                           'test_schedule',                                                   
                                                           'new_schedule',
                                                           'hourly'
-                                                          ), (False, False, "Modify schedule failed. Schedule name and task frequency cannot be changed at same time", {}))
+                                                          ), (True, True, 'Modified Schedule test_schedule successfully.', {}))
                                                           
 
         self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
