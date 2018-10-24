@@ -741,7 +741,7 @@ class TestHpe3parSnapshot(unittest.TestCase):
         self.assertEqual(hpe3par_snapshot.delete_snapshot(mock_client.HPE3ParClient,
                                                           'USER',
                                                           'PASS',
-                                                          'test_snapshot1111111111111111111111111111',
+                                                          'test_snapshot1111111111111111111111111111'
                                                           ), (False, False, "Snapshot create failed. Snapshot name must be atleast 1 character and not more than 31 characters", {}))
 
 
@@ -757,6 +757,15 @@ class TestHpe3parSnapshot(unittest.TestCase):
                                                                    'MEDIUM',
                                                                    False
                                                                    ), (True, True, "Restored offline snapshot %s successfully." % 'test_snapshot', {}))
+
+        self.assertEqual(hpe3par_snapshot.restore_snapshot_offline(mock_client.HPE3ParClient,
+                                                          'USER',
+                                                          'PASS',
+                                                          'test_snapshot1111111111111111111111111111',
+                                                          'MEDIUM',
+				                          False
+                                                          ), (False, False, "Snapshot create failed. Snapshot name must be atleast 1 character and not more than 31 characters", {}))
+
 
         self.assertEqual(hpe3par_snapshot.restore_snapshot_offline(mock_client.HPE3ParClient,
                                                                    None,
@@ -794,6 +803,13 @@ is null", {}))
                                                                   False
                                                                   ), (False, False, "Online snapshot restore failed. Storage system username or password is \
 null", {}))
+
+
+        self.assertEqual(hpe3par_snapshot.restore_snapshot_online(mock_client.HPE3ParClient,
+                                                          'USER',
+                                                          'PASS',
+                                                          'test_snapshot1111111111111111111111111111',
+                                                          False                                                                                                                        ), (False, False, "Snapshot create failed. Snapshot name must be atleast 1 character and not more than 31 characters", {}))
 
         self.assertEqual(hpe3par_snapshot.restore_snapshot_online(mock_client.HPE3ParClient,
                                                                   'USER',

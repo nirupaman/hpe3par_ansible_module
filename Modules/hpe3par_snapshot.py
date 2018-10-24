@@ -417,7 +417,7 @@ password is null",
     if len(snapshot_name) < 1 or len(snapshot_name) > 31:
         return (False, False,
                 "Snapshot create failed. Snapshot name must be atleast 1 \
-                 character and not more than 31 characters", {})
+character and not more than 31 characters", {})
     try:
         client_obj.login(storage_system_username, storage_system_password)
         optional = {
@@ -461,7 +461,7 @@ password is null",
     if len(snapshot_name) < 1 or len(snapshot_name) > 31:
         return (False, False,
                 "Snapshot create failed. Snapshot name must be atleast 1 \
-                 character and not more than 31 characters", {})
+character and not more than 31 characters", {})
     try:
         client_obj.login(storage_system_username, storage_system_password)
         optional = {'online': True,
