@@ -531,125 +531,6 @@ than 19 characters", {})
         return (False, False, "Expiration time must be \
 greater than or equal to retention time", {})
 
-    interval = ['yearly', 'monthly', 'weekly', 'daily', 'hourly']
-    if task_freq not in interval and ' ' not in task_freq:
-            return (False,
-                    False, 
-                    "The schedule format is <minute> <hour> <dom> \
-<month> <dow> or by hourly daily monthly weekly monthly yearly", {})
-
-    if ' ' in task_freq:
-            task_custom_list = str(task_freq).split()
-            if len(task_custom_list) == 5:
-                for period in task_custom_list:
-                    if not re.match('^\*$', str(period)) and \
-                           not re.match('^\d{1,2}-\d{1,2}$', str(period)) and \
-                           not re.match('^\d{1,2}$', period):
-                         return (False, False, "Invalid task frequency string " ,{})
- 
-                if re.match('^\d{1,2}$',task_custom_list[0]):
-                    if int(task_custom_list[0]) > 59 \
-                       or int(task_custom_list[0]) < 0:
-                        return (False, False,
-                                "Invalid task frequency \
-minutes should be between 0-59", {})
-                else:
-                    if re.match('^\d{1,2}-\d{1,2}$', task_custom_list[0]):
-                       interval_range = str(task_custom_list[0]).split('-')
-                       for r in interval_range:
-                           if int(r) > 59 or int(r) < 0:
-                              return (False, False,
-                                      "Invalid task frequency \
-minutes should be between 0-59", {})
-                       if interval_range[0] > interval_range[1]:
-                              return (False, False,
-                                      "Invalid task frequency \
-minutes start time should be less than end time", {})
-
-
-
-                if re.match('^\d{1,2}$',task_custom_list[1]):
-                    if int(task_custom_list[1]) > 23 \
-                       or int(task_custom_list[1]) < 0:
-                        return (False, False,
-                                "Invalid task frequency \
-hours should be between 0-23", {})
-                else:
-                    if re.match('^\d{1,2}-\d{1,2}$', task_custom_list[1]):
-                       interval_range = str(task_custom_list[1]).split('-')
-                       for r in interval_range:
-                           if int(r) > 23 or int(r) < 0:
-                              return (False, False,
-                                      "Invalid task frequency \
-hours should be between 0-23 " , {})
-                       if interval_range[0] > interval_range[1]:
-                              return (False, False,
-                                      "Invalid task frequency \
-hours start time should be less than end time", {})
-
-
-              
-
-                if re.match('^\d{1,2}$',task_custom_list[2]):
-                    if int(task_custom_list[2]) > 31 \
-                       or int(task_custom_list[2]) < 1:
-                        return (False, False,
-                                "Invalid task frequency \
-day should be between 1-31", {})
-                else:
-                    if re.match('^\d{1,2}-\d{1,2}$', task_custom_list[2]):
-                       interval_range = str(task_custom_list[2]).split('-')
-                       for r in interval_range:
-                           if int(r) > 31 or int(r) < 1:
-                              return (False, False,
-                                      "Invalid task frequency \
-day should be between 1-31", {})
-                       if interval_range[0] > interval_range[1]:
-                              return (False, False,
-                                      "Invalid task frequency \
-day start should be less than end", {})
-
-                if re.match('^\d{1,2}$',task_custom_list[3]):
-                    if int(task_custom_list[3]) > 12 \
-                       or int(task_custom_list[3]) < 1:
-                        return (False, False,
-                                "Invalid task frequency \
-month should be between 1-12", {})
-                else:
-                    if re.match('^\d{1,2}-\d{1,2}$', task_custom_list[3]):
-                       interval_range = str(task_custom_list[3]).split('-')
-                       for r in interval_range:
-                           if int(r) > 12 or int(r) < 1:
-                              return (False, False,
-                                      "Invalid task frequency \
-month should be between 1-12 ", {})
-                       if interval_range[0] > interval_range[1]:
-                              return (False, False,
-                                      "Invalid task frequency \
-month start should be less than end", {})
-
-
-                if re.match('^\d{1,2}$',task_custom_list[4]):
-                    if int(task_custom_list[4]) > 6 \
-                       or int(task_custom_list[4]) < 0:
-                        return (False, False,
-                                "Invalid task frequency \
-day of week should be between 0-6", {})
-                else:
-                    if re.match('^\d{1,2}-\d{1,2}$', task_custom_list[4]):
-                       interval_range = str(task_custom_list[4]).split('-')
-                       for r in interval_range:
-                           if int(r) > 6 or int(r) < 0:
-                              return (False, False,
-                                      "Invalid task frequency \
-day of week should be between 0-6", {})
-                       if interval_range[0] > interval_range[1]:
-                              return (False, False,
-                                      "Invalid task frequency \
-day of week start should be less than end", {})
-
-            else:
-                return (False, False, "Invalid task frequency string", {})
     try:
         client_obj.login(storage_system_username, storage_system_password)
         client_obj.setSSHOptions(storage_system_ip, storage_system_username,
@@ -677,7 +558,7 @@ day of week start should be less than end", {})
         else:
             return (True, False, "Schedule already Exist", {})
     except Exception as e:
-        return (False, "False", "Schedule creation failed | %s" % (e), {})
+        return (False, False, "%s" %  e.msg.msg.replace("\"",""), {})
     finally:
         client_obj.logout()
     return (
