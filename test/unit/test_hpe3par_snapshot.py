@@ -602,6 +602,31 @@ class TestHpe3parSnapshot(unittest.TestCase):
 
         self.assertEqual(hpe3par_snapshot.create_snapshot(mock_client.HPE3ParClient,
                                                           'USER',
+                                                          'PASS',
+                                                          'test_snapshot1222222222222223333333',
+                                                          'base_volume',
+                                                          False,
+                                                          10,
+                                                          10,
+                                                          'Hours',
+                                                          'Days',
+                                                          ), (False, False, "Snapshot create failed. Snapshot name must be atleast 1 character and not more than 31 characters", {}))
+
+        self.assertEqual(hpe3par_snapshot.create_snapshot(mock_client.HPE3ParClient,
+                                                          'USER',
+                                                          'PASS',
+                                                          'test_snapshot',
+                                                          'base_volume1222222222222222222222222222',
+                                                          False,
+                                                          10,
+                                                          10,
+                                                          'Hours',
+                                                          'Days',
+                                                          ), (False, False, "Snapshot create failed. Base volume name must be atleast 1 character and not more than 31 characters", {}))
+
+
+        self.assertEqual(hpe3par_snapshot.create_snapshot(mock_client.HPE3ParClient,
+                                                          'USER',
                                                           None,
                                                           'test_snapshot',
                                                           'base_volume',
@@ -664,6 +689,17 @@ class TestHpe3parSnapshot(unittest.TestCase):
         self.assertEqual(hpe3par_snapshot.modify_snapshot(mock_client.HPE3ParClient,
                                                           'USER',
                                                           'PASS',
+                                                          'test_snapshot234333333333333333333333333333',
+                                                          'test_snapshot',
+                                                          10,
+                                                          10,
+                                                          True,
+                                                          ), (False, False, "Snapshot create failed. Snapshot name must be atleast 1 character and not more than 31 characters", {}))
+
+
+        self.assertEqual(hpe3par_snapshot.modify_snapshot(mock_client.HPE3ParClient,
+                                                          'USER',
+                                                          'PASS',
                                                           None,
                                                           'new_snapshot',
                                                           10,
@@ -701,6 +737,13 @@ class TestHpe3parSnapshot(unittest.TestCase):
                                                           'PASS',
                                                           None
                                                           ), (False, False, "Snapshot delete failed. Snapshot name is null", {}))
+
+        self.assertEqual(hpe3par_snapshot.delete_snapshot(mock_client.HPE3ParClient,
+                                                          'USER',
+                                                          'PASS',
+                                                          'test_snapshot1111111111111111111111111111',
+                                                          ), (False, False, "Snapshot create failed. Snapshot name must be atleast 1 character and not more than 31 characters", {}))
+
 
     @mock.patch('Modules.hpe3par_snapshot.client')
     def test_restore_snapshot_offline(self, mock_client):
@@ -943,6 +986,14 @@ null", {}))
                                                           'hourly'
                                                           ), (True, True, "Modified Schedule %s successfully." % 'test_schedule', {}))
 
+        self.assertEqual(hpe3par_snapshot.modify_schedule(mock_client.HPE3ParClient,
+                                                          '192.168.0.1',
+                                                          'USER',
+                                                          'PASS',
+                                                          'test_schedule',
+                                                          'schedule_new111111111111111111111111111111',
+                                                          'hourly'
+                                                          ), (False, False, "Modify schedule failed. New Schedule name must be atleast 1 character and not more than 31 characters", {}))
         
         
         mock_client.HPE3ParClient.scheduleExists.return_value = False
@@ -1116,6 +1167,14 @@ null", {}))
                                                           None,
                                                           'test_schedule'
                                                           ), (False, False, "Schedule delete failed. Storage system username or password is null", {}))
+
+        self.assertEqual(hpe3par_snapshot.delete_schedule(mock_client.HPE3ParClient,
+                                                          '192.168.0.1',
+                                                          None,
+                                                          'PASS',
+                                                          'test_schedule'
+                                                          ), (False, False, "Schedule delete failed. Storage system username or password is null", {}))
+
 
         self.assertEqual(hpe3par_snapshot.delete_schedule(mock_client.HPE3ParClient,
                                                           '192.168.0.1',

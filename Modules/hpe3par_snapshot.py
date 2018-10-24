@@ -374,8 +374,8 @@ null",
             "Snapshot delete failed. Snapshot name is null",
             {})
     if len(snapshot_name) < 1 or len(snapshot_name) > 31:
-        return (False, False, "Snapshot create failed. Snapshot name must \
-                be atleast 1 character and not more than 31 characters", {})
+        return (False, False, "Snapshot create failed. Snapshot name must be \
+atleast 1 character and not more than 31 characters", {})
     try:
         client_obj.login(storage_system_username, storage_system_password)
         if client_obj.volumeExists(snapshot_name):
@@ -615,44 +615,6 @@ is null",
     except Exception as e:
         return (False, False, "%s" %  e.msg.msg.replace("\"",""), {})
     return (True, True, "Modified Schedule %s successfully." % schedule_name, {})
-
-def delete_schedule(
-        client_obj,
-        storage_system_ip,
-        storage_system_username,
-        storage_system_password,
-        schedule_name):
-    if storage_system_username is None or storage_system_password is None:
-        return (
-            False,
-            False,
-            "Schedule delete failed. Storage system username or password is \
-null",
-            {})
-    if schedule_name is None:
-        return (
-            False,
-            False,
-            "Schedule delete failed. Schedule name is null",
-            {})
-    if len(schedule_name) < 1 or len(schedule_name) > 31:
-        return (False, False, "Schedule create failed. Schedule name must be \
-atleast 1 character and not more than 31 characters", {})
-    try:
-        client_obj.setSSHOptions(storage_system_ip, storage_system_username,
-                                 storage_system_password)
-        if client_obj.scheduleExists(schedule_name):
-            client_obj.deleteSchedule(schedule_name)
-        else:
-            return (True, False, "Schedule does not exist", {})
-    except Exception as e:
-        return (False, False, "Schedule delete failed | %s" % (e), {})
-    return (
-        True,
-        True,
-        "Deleted Schedule %s successfully." %
-        schedule_name,
-        {})
 
 def suspend_schedule(
         client_obj,
