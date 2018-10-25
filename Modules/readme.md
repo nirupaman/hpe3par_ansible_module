@@ -1,19 +1,13 @@
 source
-
-:   hpe3par\_cpg.py
-
-hpe3par\_cpg - Manage HPE 3PAR CPG
+ :   hpe3par\_cpg.py
+ hpe3par\_cpg - Manage HPE 3PAR CPG
 ==================================
-
-Synopsis
+ Synopsis
 --------
-
--   Create and delete CPG on HPE 3PAR.
-
-Parameters
+ -   Create and delete CPG on HPE 3PAR.
+ Parameters
 ----------
-
-<table  border=0 cellpadding=0 class="documentation-table">
+ <table  border=0 cellpadding=0 class="documentation-table">
             <tr>
         <th class="head"><div class="cell-border">Parameter</div></th>
         <th class="head"><div class="cell-border">Choices/<font color="blue">Defaults</font></div></th>
@@ -350,8 +344,7 @@ Parameters
 <br/>
 Examples
 --------
-
-``` {.sourceCode .yaml}
+ ``` {.sourceCode .yaml}
 - name: Create CPG "{{ cpg_name }}"
   hpe3par_cpg:
     storage_system_ip="{{ storage_system_ip }}"
@@ -370,8 +363,7 @@ Examples
     set_size="{{ set_size }}"
     high_availability="{{ high_availability }}"
     disk_type="{{ disk_type }}"
-
-- name: Delete CPG "{{ cpg_name }}"
+ - name: Delete CPG "{{ cpg_name }}"
   hpe3par_cpg:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -379,30 +371,19 @@ Examples
     state=absent
     cpg_name="{{ cpg_name }}"
 ```
-
-
-### Author
-
--   Farhan Nomani (@farhan7500)
+ ### Author
+ -   Farhan Nomani (@farhan7500)
 -   Gautham P Hegde (@gautamphegde)
-
-source
-
-:   hpe3par\_flash\_cache.py
-
-
-hpe3par\_flash\_cache - Manage HPE 3PAR Flash Cache
+ source
+ :   hpe3par\_flash\_cache.py
+ hpe3par\_flash\_cache - Manage HPE 3PAR Flash Cache
 ===================================================
-
-Synopsis
+ Synopsis
 --------
-
--   On HPE 3PAR - Create Flash Cache - Delete Flash Cache.
-
-Parameters
+ -   On HPE 3PAR - Create Flash Cache - Delete Flash Cache.
+ Parameters
 ----------
-
-<table  border=0 cellpadding=0 class="documentation-table">
+ <table  border=0 cellpadding=0 class="documentation-table">
             <tr>
         <th class="head"><div class="cell-border">Parameter</div></th>
         <th class="head"><div class="cell-border">Choices/<font color="blue">Defaults</font></div></th>
@@ -524,8 +505,7 @@ Parameters
 <br/>
 Examples
 --------
-
-``` {.sourceCode .yaml}
+ ``` {.sourceCode .yaml}
 - name: Create Flash Cache
   hpe3par_flash_cache:
     storage_system_ip="{{ storage_system_ip }}"
@@ -533,39 +513,28 @@ Examples
     storage_system_password="{{ storage_system_password }}"
     state=present
     size_in_gib="{{ size_in_gib }}"
-
-- name: Delete Flash Cache
+ - name: Delete Flash Cache
   hpe3par_flash_cache:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
     storage_system_password="{{ storage_system_password }}"
     state=absent
 ```
-
-### Author
-
--   Farhan Nomani (<nomani@hpe.com>)
-
-source
-
-:   hpe3par\_host.py
-
-
-hpe3par\_host - Manage HPE 3PAR Host
+ ### Author
+ -   Farhan Nomani (<nomani@hpe.com>)
+ source
+ :   hpe3par\_host.py
+ hpe3par\_host - Manage HPE 3PAR Host
 ====================================
-
-Synopsis
+ Synopsis
 --------
-
--   On HPE 3PAR - Create Host. - Delete Host. - Add Initiator Chap. -
+ -   On HPE 3PAR - Create Host. - Delete Host. - Add Initiator Chap. -
     Remove Initiator Chap. - Add Target Chap. - Remove Target Chap. -
     Add FC Path to Host - Remove FC Path from Host - Add ISCSI Path to
     Host - Remove ISCSI Path from Host
-
-Parameters
+ Parameters
 ----------
-
-<table  border=0 cellpadding=0 class="documentation-table">
+ <table  border=0 cellpadding=0 class="documentation-table">
             <tr>
         <th class="head"><div class="cell-border">Parameter</div></th>
         <th class="head"><div class="cell-border">Choices/<font color="blue">Defaults</font></div></th>
@@ -865,8 +834,7 @@ Required with action add_iscsi_path_to_host, remove_iscsi_path_from_host</div>
 <br/>
 Examples
 --------
-
-``` {.sourceCode .yaml}
+ ``` {.sourceCode .yaml}
 - name: Create Host "{{ host_name }}"
   hpe3par_host:
     storage_system_ip="{{ storage_system_ip }}"
@@ -874,8 +842,7 @@ Examples
     storage_system_password="{{ storage_system_password }}"
     state=present
     host_name="{{ host_name }}"
-
-- name: Modify Host "{{ host_name }}"
+ - name: Modify Host "{{ host_name }}"
   hpe3par_host:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -883,8 +850,7 @@ Examples
     state=modify
     host_name="{{ host_name }}"
     host_new_name="{{ host_new_name }}"
-
-- name: Delete Host "{{ new_name }}"
+ - name: Delete Host "{{ new_name }}"
   hpe3par_host:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -892,29 +858,19 @@ Examples
     state=absent
     host_name="{{ host_new_name }}"
 ```
-
-### Author
-
--   Farhan Nomani (<nomani@hpe.com>)
-
-source
-
-:   hpe3par\_hostset.py
-
-
-hpe3par\_hostset - Manage HPE 3PAR Host Set
+ ### Author
+ -   Farhan Nomani (<nomani@hpe.com>)
+ source
+ :   hpe3par\_hostset.py
+ hpe3par\_hostset - Manage HPE 3PAR Host Set
 ===========================================
-
-Synopsis
+ Synopsis
 --------
-
--   On HPE 3PAR - Create Host Set. - Add Hosts to Host Set. - Remove
+ -   On HPE 3PAR - Create Host Set. - Add Hosts to Host Set. - Remove
     Hosts from Host Set.
-
-Parameters
+ Parameters
 ----------
-
-<table  border=0 cellpadding=0 class="documentation-table">
+ <table  border=0 cellpadding=0 class="documentation-table">
             <tr>
         <th class="head"><div class="cell-border">Parameter</div></th>
         <th class="head"><div class="cell-border">Choices/<font color="blue">Defaults</font></div></th>
@@ -1057,8 +1013,7 @@ Required with action add_hosts, remove_hosts</div>
 <br/>
 Examples
 --------
-
-``` {.sourceCode .yaml}
+ ``` {.sourceCode .yaml}
 - name: Create hostset "{{ hostsetset_name }}"
   hpe3par_hostset:
     storage_system_ip="{{ storage_system_ip }}"
@@ -1067,8 +1022,7 @@ Examples
     state=present
     hostset_name="{{ hostset_name }}"
     setmembers="{{ add_host_setmembers }}"
-
-- name: Add hosts to Hostset "{{ hostsetset_name }}"
+ - name: Add hosts to Hostset "{{ hostsetset_name }}"
   hpe3par_hostset:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -1076,8 +1030,7 @@ Examples
     state=add_hosts
     hostset_name="{{ hostset_name }}"
     setmembers="{{ add_host_setmembers2 }}"
-
-- name: Remove hosts from Hostset "{{ hostsetset_name }}"
+ - name: Remove hosts from Hostset "{{ hostsetset_name }}"
   hpe3par_hostset:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -1085,8 +1038,7 @@ Examples
     state=remove_hosts
     hostset_name="{{ hostset_name }}"
     setmembers="{{ remove_host_setmembers }}"
-
-- name: Delete Hostset "{{ hostset_name }}"
+ - name: Delete Hostset "{{ hostset_name }}"
   hpe3par_hostset:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -1094,30 +1046,20 @@ Examples
     state=absent
     hostset_name="{{ hostset_name }}"
 ```
-
-### Author
-
--   Farhan Nomani (<nomani@hpe.com>)
-
-source
-
-:   hpe3par\_offline\_clone.py
+ ### Author
+ -   Farhan Nomani (<nomani@hpe.com>)
+ source
+ :   hpe3par\_offline\_clone.py
   
-
-hpe3par\_offline\_clone - Manage HPE 3PAR Offline Clone
+ hpe3par\_offline\_clone - Manage HPE 3PAR Offline Clone
 =======================================================
-
-Synopsis
+ Synopsis
 --------
-
--   On HPE 3PAR - Create Offline Clone. - Delete Clone. - Resync Clone.
+ -   On HPE 3PAR - Create Offline Clone. - Delete Clone. - Resync Clone.
     - Stop Cloning.
-
-
-Parameters
+ Parameters
 ----------
-
-<table  border=0 cellpadding=0 class="documentation-table">
+ <table  border=0 cellpadding=0 class="documentation-table">
             <tr>
         <th class="head"><div class="cell-border">Parameter</div></th>
         <th class="head"><div class="cell-border">Choices/<font color="blue">Defaults</font></div></th>
@@ -1327,8 +1269,7 @@ Required with action present, absent, stop</div>
 <br/>
 Examples
 --------
-
-``` {.sourceCode .yaml}
+ ``` {.sourceCode .yaml}
 - name: Create Clone {{ clone_name }}
   hpe3par_offline_clone:
     storage_system_ip="{{ storage_system_ip }}"
@@ -1339,8 +1280,7 @@ Examples
     base_volume_name="{{ volume_name }}"
     dest_cpg="{{ cpg }}"
     priority="MEDIUM"
-
-- name: Stop Clone {{ clone_name }}
+ - name: Stop Clone {{ clone_name }}
   hpe3par_offline_clone:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -1348,8 +1288,7 @@ Examples
     state=stop
     clone_name={{ clone_name }}
     base_volume_name="{{ volume_name }}"
-
-- name: Delete clone {{ clone_name }}
+ - name: Delete clone {{ clone_name }}
   hpe3par_offline_clone:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -1358,27 +1297,18 @@ Examples
     clone_name={{ clone_name }}
     base_volume_name="{{ volume_name }}"
 ```
-
-### Author
-
--   Farhan Nomani (<nomani@hpe.com>)
-
-source
-
-:   hpe3par\_online\_clone.py
-
-hpe3par\_online\_clone - Manage HPE 3PAR Online Clone
+ ### Author
+ -   Farhan Nomani (<nomani@hpe.com>)
+ source
+ :   hpe3par\_online\_clone.py
+ hpe3par\_online\_clone - Manage HPE 3PAR Online Clone
 =====================================================
-
-Synopsis
+ Synopsis
 --------
-
--   On HPE 3PAR - Create Online Clone. - Delete Clone. - Resync Clone.
-
-Parameters
+ -   On HPE 3PAR - Create Online Clone. - Delete Clone. - Resync Clone.
+ Parameters
 ----------
-
-<table  border=0 cellpadding=0 class="documentation-table">
+ <table  border=0 cellpadding=0 class="documentation-table">
             <tr>
         <th class="head"><div class="cell-border">Parameter</div></th>
         <th class="head"><div class="cell-border">Choices/<font color="blue">Defaults</font></div></th>
@@ -1604,8 +1534,7 @@ Required with action present, absent, stop</div>
 <br/>
 Examples
 --------
-
-``` {.sourceCode .yaml}
+ ``` {.sourceCode .yaml}
 - name: Create Clone clone_volume_ansible
   hpe3par_online_clone:
     storage_system_ip="{{ storage_system_ip }}"
@@ -1619,12 +1548,10 @@ Examples
     tdvv=False
     compression=False
     snap_cpg="{{ cpg }}"
-
-- name: sleep for 100 seconds and continue with play
+ - name: sleep for 100 seconds and continue with play
   wait_for:
     timeout=100
-
-- name: Delete clone "clone_volume_ansible"
+ - name: Delete clone "clone_volume_ansible"
   hpe3par_online_clone:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -1633,28 +1560,19 @@ Examples
     clone_name="clone_volume_ansible"
     base_volume_name="{{ volume_name }}"
 ```
-
-### Author
-
--   Farhan Nomani (<nomani@hpe.com>)
-
-source
-
-:   hpe3par\_qos.py
+ ### Author
+ -   Farhan Nomani (<nomani@hpe.com>)
+ source
+ :   hpe3par\_qos.py
  
-
-hpe3par\_qos - Manage HPE 3PAR QoS Rules
+ hpe3par\_qos - Manage HPE 3PAR QoS Rules
 ========================================
-
-Synopsis
+ Synopsis
 --------
-
--   On HPE 3PAR - Create QoS Rule. - Delete QoS Rule. - Modify QoS Rule.
-
-Parameters
+ -   On HPE 3PAR - Create QoS Rule. - Delete QoS Rule. - Modify QoS Rule.
+ Parameters
 ----------
-
-<table  border=0 cellpadding=0 class="documentation-table">
+ <table  border=0 cellpadding=0 class="documentation-table">
             <tr>
         <th class="head"><div class="cell-border">Parameter</div></th>
         <th class="head"><div class="cell-border">Choices/<font color="blue">Defaults</font></div></th>
@@ -2048,8 +1966,7 @@ Parameters
 <br/>
 Examples
 --------
-
-``` {.sourceCode .yaml}
+ ``` {.sourceCode .yaml}
 - name: Create QoS
   hpe3par_qos:
     storage_system_ip="{{ storage_system_ip }}"
@@ -2068,8 +1985,7 @@ Examples
     latency_goal_usecs="{{ latency_goal_usecs }}"
     type="{{ type }}"
     iomax_limit_op="{{ iomax_limit_op }}"
-
-- name: Modify QoS
+ - name: Modify QoS
   hpe3par_qos:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -2087,8 +2003,7 @@ Examples
     latency_goal_usecs="{{ latency_goal_usecs }}"
     type="{{ type }}"
     iomax_limit_op="{{ iomax_limit_op }}"
-
-- name: Delete QoS
+ - name: Delete QoS
   hpe3par_qos:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -2097,27 +2012,18 @@ Examples
     qos_target_name="{{ qos_target_name }}"
     type="{{ type }}"
 ```
-
-### Author
-
--   Farhan Nomani (<nomani@hpe.com>)
-
-source
-
-:   hpe3par\_snapshot.py
-
-hpe3par\_snapshot - Manage HPE 3PAR Snapshots
+ ### Author
+ -   Farhan Nomani (<nomani@hpe.com>)
+ source
+ :   hpe3par\_snapshot.py
+ hpe3par\_snapshot - Manage HPE 3PAR Snapshots
 =============================================
-
-Synopsis
+ Synopsis
 --------
-
--   On HPE 3PAR - Create Snapshot. - Delete Snapshot. - Modify Snapshot. - Create Schedule. - Modify Schedule. - Suspend Schedule. - Resume Schedule. - Delete Schedule.
-
-Parameters
+ -   On HPE 3PAR - Create Snapshot. - Delete Snapshot. - Modify Snapshot.
+ Parameters
 ----------
-
-<table  border=0 cellpadding=0 class="documentation-table">
+ <table  border=0 cellpadding=0 class="documentation-table">
             <tr>
         <th class="head"><div class="cell-border">Parameter</div></th>
         <th class="head"><div class="cell-border">Choices/<font color="blue">Defaults</font></div></th>
@@ -2241,24 +2147,6 @@ Required with action present</div>
                                                                                             </div>
             </td>
         </tr>
-                            <tr class="return-value-column">
-                            <td>
-                <div class="outer-elbow-container">
-                                            <div class="elbow-key">
-                        <b>new_schedule_name</b>
-                                                                            </div>
-                </div>
-            </td>
-                            <td>
-                <div class="cell-border">
-                                                                                                                                                                                        </div>
-            </td>
-                                                            <td>
-                <div class="cell-border">
-                                                                                <div>New Name of the schedule.</div>
-                                                                                            </div>
-            </td>
-        </tr>            
                             <tr class="return-value-column">
                             <td>
                 <div class="outer-elbow-container">
@@ -2407,42 +2295,6 @@ Required with action present</div>
                             <td>
                 <div class="outer-elbow-container">
                                             <div class="elbow-key">
-                        <b>schedule_name</b>
-                        <br/><div style="font-size: small; color: red">required</div>                                                    </div>
-                </div>
-            </td>
-                            <td>
-                <div class="cell-border">
-                                                                                                                                                                                        </div>
-            </td>
-                                                            <td>
-                <div class="cell-border">
-                                                                                <div>Specifies name of the schedule.</div>
-                                                                                            </div>
-            </td>
-        </tr>  
-                            <tr class="return-value-column">
-                            <td>
-                <div class="outer-elbow-container">
-                                            <div class="elbow-key">
-                        <b>task_freq</b>
-                                                                            </div>
-                </div>
-            </td>
-                            <td>
-                <div class="cell-border">
-                                                                                                                                                                                        </div>
-            </td>
-                                                            <td>
-                <div class="cell-border">
-                                                                                <div>Frequency as special string for the schedule to be created.</div>
-                                                                                            </div>
-            </td>
-        </tr>                
-                            <tr class="return-value-column">
-                            <td>
-                <div class="outer-elbow-container">
-                                            <div class="elbow-key">
                         <b>state</b>
                         <br/><div style="font-size: small; color: red">required</div>                                                    </div>
                 </div>
@@ -2522,103 +2374,62 @@ Required with action present</div>
 <br/>
 Examples
 --------
-
-``` {.sourceCode .yaml}
+ ``` {.sourceCode .yaml}
 - name: Create Volume snasphot my_ansible_snapshot
   hpe3par_snapshot:
-    storage_system_ip: 10.10.10.1
-    storage_system_username: username
-    storage_system_password: password
-    state: present
-    snapshot_name: snap-volume
-    base_volume_name: test_volume
-    read_only: False
-    
-- name: Restore offline Volume snasphot my_ansible_snapshot
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=present
+    snapshot_name="{{ snapshot_name }}"
+    base_volume_name="{{ base_volume_name }}"
+    read_only=False
+ - name: Restore offline Volume snasphot my_ansible_snapshot
   hpe3par_snapshot:
-    storage_system_ip: 10.10.10.1
-    storage_system_username: username
-    storage_system_password: password
-    state: restore_offline
-    snapshot_name: snap-volume
-    priority: MEDIUM
-    
-- name: Restore offline Volume snasphot my_ansible_snapshot
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=restore_offline
+    snapshot_name="{{ snapshot_name }}"
+    priority="MEDIUM"
+ - name: Restore offline Volume snasphot my_ansible_snapshot
   hpe3par_snapshot:
-    storage_system_ip: 10.10.10.1
-    storage_system_username: username
-    storage_system_password: password
-    state: restore_online
-    snapshot_name: snap-volume
-    
-- name: Modify/rename snasphot my_ansible_snapshot to my_ansible_snapshot_renamed
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=restore_online
+    snapshot_name="{{ snapshot_name }}"
+ - name: Modify/rename snasphot my_ansible_snapshot to my_ansible_snapshot_renamed
   hpe3par_snapshot:
-    storage_system_ip: 10.10.10.1
-    storage_system_username: username
-    storage_system_password: password
-    state: modify
-    snapshot_name: snap-volume
-    new_name: snapshot-volume
-    
-- name: Delete snasphot my_ansible_snapshot_renamed
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=modify
+    snapshot_name="{{ snapshot_name }}"
+    new_name="{{ new_name }}"
+ - name: Delete snasphot my_ansible_snapshot_renamed
   hpe3par_snapshot:
-    storage_system_ip: 10.10.10.1
-    storage_system_username: username
-    storage_system_password: password
-    state: absent
-    snapshot_name: snap-volume
-    
-- name: Create schedule my_ansible_sc
-  hpe3par_snapshot:
-    storage_system_ip: 10.10.10.1
-    storage_system_username: username
-    storage_system_password: password
-    state: create_schedule
-    schedule_name: my_ansible_sc
-    base_volume_name: test_volume
-    
-- name: Modify schedule my_ansible_sc
-  hpe3par_snapshot:
-    storage_system_ip: 10.10.10.1
-    storage_system_username: username
-    storage_system_password: password
-    state: create_schedule
-    schedule_name: my_ansible_sc
-    new_schedule_name: test_ansible_sc
-- name: Delete schedule my_ansible_sc
-
-  hpe3par_snapshot:
-    storage_system_ip: 10.10.10.1
-    storage_system_username: username
-    storage_system_password: password
-    state: delete_schedule
-    schedule_name: my_ansible_sc   
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=absent
+    snapshot_name="{{ snapshot_name }}"
 ```
-
-### Author
-
--   Farhan Nomani (<nomani@hpe.com>)
-
-source
-
-:   hpe3par\_vlun.py
-
-
-hpe3par\_vlun - Manage HPE 3PAR VLUN
+ ### Author
+ -   Farhan Nomani (<nomani@hpe.com>)
+ source
+ :   hpe3par\_vlun.py
+ hpe3par\_vlun - Manage HPE 3PAR VLUN
 ====================================
-
-Synopsis
+ Synopsis
 --------
-
--   On HPE 3PAR - Export volume to host. - Export volumeset to host. -
+ -   On HPE 3PAR - Export volume to host. - Export volumeset to host. -
     Export volume to hostset. - Export volumeset to hostset. - Unexport
     volume from host. - Unexport volumeset from host. - Unexport volume
     from hostset. - Unexport volumeset from hostset.
-
-Parameters
+ Parameters
 ----------
-
-<table  border=0 cellpadding=0 class="documentation-table">
+ <table  border=0 cellpadding=0 class="documentation-table">
             <tr>
         <th class="head"><div class="cell-border">Parameter</div></th>
         <th class="head"><div class="cell-border">Choices/<font color="blue">Defaults</font></div></th>
@@ -2878,8 +2689,7 @@ Required with action export_volumeset_to_host, unexport_volumeset_from_host, exp
 <br/>
 Examples
 --------
-
-``` {.sourceCode .yaml}
+ ``` {.sourceCode .yaml}
 - name: Create VLUN
   hpe3par_vlun:
     storage_system_ip="{{ storage_system_ip }}"
@@ -2890,8 +2700,7 @@ Examples
     host_name="{{ host_name }}"
     lunid="{{ lunid }}"
     autolun="{{ autolun }}"
-
-- name: Create VLUN
+ - name: Create VLUN
   hpe3par_vlun:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -2901,8 +2710,7 @@ Examples
     host_set_name="{{ hostset_name }}"
     lunid="{{ lunid }}"
     autolun="{{ autolun }}"
-
-- name: Create VLUN
+ - name: Create VLUN
   hpe3par_vlun:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -2912,8 +2720,7 @@ Examples
     host_name="{{ vlun_host_name }}"
     lunid="{{ lunid }}"
     autolun="{{ autolun }}"
-
-- name: Create VLUN
+ - name: Create VLUN
   hpe3par_vlun:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -2923,8 +2730,7 @@ Examples
     host_set_name="{{ hostset_name }}"
     lunid="{{ lunid }}"
     autolun="{{ autolun }}"
-
-- name: Delete VLUN
+ - name: Delete VLUN
   hpe3par_vlun:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -2934,30 +2740,20 @@ Examples
     host_name="{{ host_name }}"
     lunid="{{ lunid }}"
 ```
-
-### Author
-
--   Farhan Nomani (<nomani@hpe.com>)
-
-source
-
-:   hpe3par\_volume.py
-
-
-hpe3par\_volume - Manage HPE 3PAR Volume
+ ### Author
+ -   Farhan Nomani (<nomani@hpe.com>)
+ source
+ :   hpe3par\_volume.py
+ hpe3par\_volume - Manage HPE 3PAR Volume
 ========================================
-
-Synopsis
+ Synopsis
 --------
-
--   On HPE 3PAR - Create Volume. - Delete Volume. - Modify Volume. -
+ -   On HPE 3PAR - Create Volume. - Delete Volume. - Modify Volume. -
     Grow Volume - Grow Volume to certain size - Change Snap CPG - Change
     User CPG - Convert Provisioning TypeError - Set Snap CPG
-
-Parameters
+ Parameters
 ----------
-
-<table  border=0 cellpadding=0 class="documentation-table">
+ <table  border=0 cellpadding=0 class="documentation-table">
             <tr>
         <th class="head"><div class="cell-border">Parameter</div></th>
         <th class="head"><div class="cell-border">Choices/<font color="blue">Defaults</font></div></th>
@@ -3477,8 +3273,7 @@ Required with action convert_type</div>
 <br/>
 Examples
 --------
-
-``` {.sourceCode .yaml}
+ ``` {.sourceCode .yaml}
 - name: Create Volume "{{ volume_name }}"
   hpe3par_volume:
     storage_system_ip="{{ storage_system_ip }}"
@@ -3489,8 +3284,7 @@ Examples
     cpg="{{ cpg }}"
     size="{{ size }}"
     snap_cpg="{{ snap_cpg }}"
-
-- name: Change provisioning type of Volume "{{ volume_name }}" to "{{ type }}"
+ - name: Change provisioning type of Volume "{{ volume_name }}" to "{{ type }}"
   hpe3par_volume:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -3500,8 +3294,7 @@ Examples
     type="{{ type }}"
     cpg="{{ cpg }}"
     wait_for_task_to_end="{{ wait_for_task_to_end }}"
-
-- name: Set Snap CPG of Volume "{{ volume_name }}" to "{{ snap_cpg }}"
+ - name: Set Snap CPG of Volume "{{ volume_name }}" to "{{ snap_cpg }}"
   hpe3par_volume:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -3509,8 +3302,7 @@ Examples
     state=set_snap_cpg
     volume_name="{{ volume_name }}"
     snap_cpg="{{ snap_cpg }}"
-
-- name: Change snap CPG of Volume "{{ volume_name }}" to "{{ snap_cpg }}"
+ - name: Change snap CPG of Volume "{{ volume_name }}" to "{{ snap_cpg }}"
   hpe3par_volume:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -3519,8 +3311,7 @@ Examples
     volume_name="{{ volume_name }}"
     snap_cpg="{{ snap_cpg }}"
     wait_for_task_to_end="{{ wait_for_task_to_end }}"
-
-- name: Grow Volume "{{ volume_name }} by "{{ size }}" {{ size_unit }}"
+ - name: Grow Volume "{{ volume_name }} by "{{ size }}" {{ size_unit }}"
   hpe3par_volume:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -3529,8 +3320,7 @@ Examples
     volume_name="{{ volume_name }}"
     size="{{ size }}"
     size_unit="{{ size_unit }}"
-
-- name: Grow Volume "{{ volume_name }} to "{{ size }}" {{ size_unit }}"
+ - name: Grow Volume "{{ volume_name }} to "{{ size }}" {{ size_unit }}"
   hpe3par_volume:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -3539,8 +3329,7 @@ Examples
     volume_name="{{ volume_name }}"
     size="{{ size }}"
     size_unit="{{ size_unit }}"
-
-- name: Rename Volume "{{ volume_name }} to {{ new_name }}"
+ - name: Rename Volume "{{ volume_name }} to {{ new_name }}"
   hpe3par_volume:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -3548,8 +3337,7 @@ Examples
     state=modify
     volume_name="{{ volume_name }}"
     new_name="{{ new_name }}"
-
-- name: Delete Volume "{{ volume_name }}"
+ - name: Delete Volume "{{ volume_name }}"
   hpe3par_volume:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -3557,29 +3345,20 @@ Examples
     state=absent
     volume_name="{{ new_name }}"
 ```
-
-### Author
-
--   Farhan Nomani (<nomani@hpe.com>)
-
-source
-
-:   hpe3par\_volumeset.py
+ ### Author
+ -   Farhan Nomani (<nomani@hpe.com>)
+ source
+ :   hpe3par\_volumeset.py
  
-
-hpe3par\_volumeset - Manage HPE 3PAR Volume Set
+ hpe3par\_volumeset - Manage HPE 3PAR Volume Set
 ===============================================
-
-Synopsis
+ Synopsis
 --------
-
--   On HPE 3PAR - Create Volume Set. - Add Volumes to Volume Set. -
+ -   On HPE 3PAR - Create Volume Set. - Add Volumes to Volume Set. -
     Remove Volumes from Volume Set.
-
-Parameters
+ Parameters
 ----------
-
-<table  border=0 cellpadding=0 class="documentation-table">
+ <table  border=0 cellpadding=0 class="documentation-table">
             <tr>
         <th class="head"><div class="cell-border">Parameter</div></th>
         <th class="head"><div class="cell-border">Choices/<font color="blue">Defaults</font></div></th>
@@ -3722,8 +3501,7 @@ Required with action add_volumes, remove_volumes</div>
 <br/>
 Examples
 --------
-
-``` {.sourceCode .yaml}
+ ``` {.sourceCode .yaml}
 - name: Create volume set "{{ volumeset_name }}"
   hpe3par_volumeset:
     storage_system_ip="{{ storage_system_ip }}"
@@ -3732,8 +3510,7 @@ Examples
     state=present
     volumeset_name="{{ volumeset_name }}"
     setmembers="{{ add_vol_setmembers }}"
-
-- name: Add volumes to Volumeset "{{ volumeset_name }}"
+ - name: Add volumes to Volumeset "{{ volumeset_name }}"
   hpe3par_volumeset:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -3741,8 +3518,7 @@ Examples
     state=add_volumes
     volumeset_name="{{ volumeset_name }}"
     setmembers="{{ add_vol_setmembers2 }}"
-
-- name: Remove volumes from Volumeset "{{ volumeset_name }}"
+ - name: Remove volumes from Volumeset "{{ volumeset_name }}"
   hpe3par_volumeset:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -3750,8 +3526,7 @@ Examples
     state=remove_volumes
     volumeset_name="{{ volumeset_name }}"
     setmembers="{{ remove_vol_setmembers }}"
-
-- name: Delete Volumeset "{{ volumeset_name }}"
+ - name: Delete Volumeset "{{ volumeset_name }}"
   hpe3par_volumeset:
     storage_system_ip="{{ storage_system_ip }}"
     storage_system_username="{{ storage_system_username }}"
@@ -3759,7 +3534,5 @@ Examples
     state=absent
     volumeset_name="{{ volumeset_name }}"
 ```
-
-### Author
-
--   Farhan Nomani (<nomani@hpe.com>)
+ ### Author
+ -   Farhan Nomani (<nomani@hpe.com>)
