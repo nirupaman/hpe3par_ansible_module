@@ -2112,7 +2112,7 @@ hpe3par\_snapshot - Manage HPE 3PAR Snapshots
 Synopsis
 --------
 
--   On HPE 3PAR - Create Snapshot. - Delete Snapshot. - Modify Snapshot.
+-   On HPE 3PAR - Create Snapshot. - Delete Snapshot. - Modify Snapshot. - Create Schedule. - Modify Schedule. - Suspend Schedule. - Resume Schedule. - Delete Schedule.
 
 Parameters
 ----------
