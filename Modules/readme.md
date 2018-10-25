@@ -2585,8 +2585,24 @@ Examples
     state: create_schedule
     schedule_name: my_ansible_sc
     new_schedule_name: test_ansible_sc
-- name: Delete schedule my_ansible_sc
+    
+- name: Suspend schedule my_ansible_sc
+  hpe3par_snapshot:
+    storage_system_ip: 10.10.10.1
+    storage_system_username: username
+    storage_system_password: password
+    state: suspend_schedule
+    schedule_name: my_ansible_sc  
 
+- name: Resume schedule my_ansible_sc
+  hpe3par_snapshot:
+    storage_system_ip: 10.10.10.1
+    storage_system_username: username
+    storage_system_password: password
+    state: resume_schedule
+    schedule_name: my_ansible_sc  
+    
+- name: Delete schedule my_ansible_sc
   hpe3par_snapshot:
     storage_system_ip: 10.10.10.1
     storage_system_username: username
