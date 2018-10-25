@@ -2567,6 +2567,48 @@ Examples
     storage_system_password="{{ storage_system_password }}"
     state=absent
     snapshot_name="{{ snapshot_name }}"
+
+- name: Create schedule my_ansible_sc
+  hpe3par_snapshot:
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=create_schedule
+    schedule_name="{{ storage_system_password }}"
+    base_volume_name="{{ storage_system_password }}"
+    
+- name: Modify schedule my_ansible_sc
+  hpe3par_snapshot:
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=modify_schedule
+    schedule_name="{{ schedule_name }}"
+    new_schedule_name="{{ new_schedule_name }}"
+
+- name: Suspend schedule my_ansible_sc
+  hpe3par_snapshot:
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=suspend_schedule
+    schedule_name="{{ schedule_name }}"    
+
+- name: Resume schedule my_ansible_sc
+  hpe3par_snapshot:
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=resume_schedule
+    schedule_name="{{ schedule_name }}"    
+    
+- name: Delete schedule my_ansible_sc
+  hpe3par_snapshot:
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=delete_schedule
+    schedule_name="{{ schedule_name }}"
 ```
 
 ### Author
