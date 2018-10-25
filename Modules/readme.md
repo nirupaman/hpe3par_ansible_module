@@ -2245,6 +2245,24 @@ Required with action present</div>
                             <td>
                 <div class="outer-elbow-container">
                                             <div class="elbow-key">
+                        <b>new_schedule_name</b>
+                                                                            </div>
+                </div>
+            </td>
+                            <td>
+                <div class="cell-border">
+                                                                                                                                                                                        </div>
+            </td>
+                                                            <td>
+                <div class="cell-border">
+                                                                                <div>New Name of the schedule.</div>
+                                                                                            </div>
+            </td>
+        </tr>            
+                            <tr class="return-value-column">
+                            <td>
+                <div class="outer-elbow-container">
+                                            <div class="elbow-key">
                         <b>priority</b>
                                                                             </div>
                 </div>
