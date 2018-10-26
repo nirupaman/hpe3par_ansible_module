@@ -2455,6 +2455,11 @@ Required with action present</div>
                                                                                                                                                                                                                     <li>modify</li>
                                                                                                                                                                                                                     <li>restore_offline</li>
                                                                                                                                                                                                                     <li>restore_online</li>
+                                                                                                                                                                                                                    <li>create_schedule</li>
+                                                                                                                                                                                                                    <li>modify_schedule</li>
+                                                                                                                                                                                                                    <li>suspend_schedule</li>
+                                                                                                                                                                                                                    <li>resume_schedule</li>
+                                                                                                                                                                                                                    <li>delete_schedule</li>
                                                                                             </ul>
                                                                                         </div>
             </td>
