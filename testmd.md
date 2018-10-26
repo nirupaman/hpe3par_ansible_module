@@ -1,35 +1,8 @@
-
-  <li><a href="../index.html">Docs</a> &raquo;</li>
-  <li><a href="">hpe3par_snapshot - Manage HPE 3PAR Snapshots</a></li>
-  
-    <li class="wy-breadcrumbs-aside">
-      <a href="https://github.com/ansible/ansible/edit/devel/lib/ansible/modules/snap/hpe3par_snapshot.py?description=%3C!---%20Your%20description%20here%20--%3E%0A%0A%2Blabel:%20docsite_pr" class="icon icon-github"> Edit on GitHub</a>
-    </li>
-  
-</ul>
-<hr/>
-
-          <div id="page-content">
           
   <div class="section" id="hpe3par-snapshot-manage-hpe-3par-snapshots">
 <span id="hpe3par-snapshot-module"></span><h1>hpe3par_snapshot - Manage HPE 3PAR Snapshots<a class="headerlink" href="#hpe3par-snapshot-manage-hpe-3par-snapshots" title="Permalink to this headline">¶</a></h1>
 <div class="versionadded">
 <p><span class="versionmodified">New in version 2.4.</span></p>
-</div>
-<div class="contents local topic" id="contents">
-<ul class="simple">
-<li><a class="reference internal" href="#synopsis" id="id1">Synopsis</a><ul>
-<li><a class="reference internal" href="#requirements" id="id2">Requirements</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#parameters" id="id3">Parameters</a></li>
-<li><a class="reference internal" href="#examples" id="id4">Examples</a></li>
-<li><a class="reference internal" href="#status" id="id5">Status</a></li>
-<li><a class="reference internal" href="#maintenance" id="id6">Maintenance</a><ul>
-<li><a class="reference internal" href="#author" id="id7">Author</a></li>
-</ul>
-</li>
-</ul>
 </div>
 <div class="section" id="synopsis">
 <h2><a class="toc-backref" href="#id1">Synopsis</a><a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
