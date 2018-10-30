@@ -2103,7 +2103,8 @@ Examples
 -   Farhan Nomani (<nomani@hpe.com>)
 
 source
-:   snap/hpe3par\_snapshot.py
+
+:   hpe3par\_snapshot.py
    
 
 hpe3par\_snapshot - Manage HPE 3PAR Snapshots
