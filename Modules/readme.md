@@ -2194,8 +2194,6 @@ Required with action present</div>
                             <td>
                                                                                                                                                         </td>
                                                             <td>
-
-
                                                                     <div>New name of the volume.</div>
                                                                             </td>
         </tr>
@@ -2203,7 +2201,6 @@ Required with action present</div>
                                                             <td colspan="1">
                 <b>new_schedule_name</b>
                                                                         </td>
-
                             <td>
                                                                                                                                                         </td>
                                                             <td>
@@ -2305,8 +2302,6 @@ Required with action present</div>
                             <td>
                                                                                                                                                         </td>
                                                             <td>
-
-
                                                                     <div>Specifies a snapshot volume name.</div>
                                                                             </td>
         </tr>
@@ -2314,7 +2309,6 @@ Required with action present</div>
                                                             <td colspan="1">
                 <b>state</b>
                                     <br/><div style="font-size: small; color: red">required</div>                                    </td>
-
                             <td>
                                                                                                                         <ul><b>Choices:</b>
                                                                                                                                                             <li>present</li>
@@ -2442,7 +2436,6 @@ Examples
     storage_system_password: password
     state: delete_schedule
     schedule_name: my_ansible_sc
-
 ```
 ### Author
 
