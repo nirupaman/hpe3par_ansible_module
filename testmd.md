@@ -1,27 +1,29 @@
-          
-  <div class="section" id="hpe3par-snapshot-manage-hpe-3par-snapshots">
-<span id="hpe3par-snapshot-module"></span><h1>hpe3par_snapshot - Manage HPE 3PAR Snapshots<a class="headerlink" href="#hpe3par-snapshot-manage-hpe-3par-snapshots" title="Permalink to this headline">¶</a></h1>
-<div class="versionadded">
-<p><span class="versionmodified">New in version 2.4.</span></p>
-</div>
-<div class="section" id="synopsis">
-<h2><a class="toc-backref" href="#id1">Synopsis</a><a class="headerlink" href="#synopsis" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>On HPE 3PAR - Create Snapshot. - Delete Snapshot. - Modify Snapshot. -  Create Schedule. - Modify Schedule. - Suspend Schedule. - Resume Schedule. - Delete Schedule.</li>
-</ul>
-<div class="section" id="requirements">
-<h3><a class="toc-backref" href="#id2">Requirements</a><a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h3>
-<p>The below requirements are needed on the host that executes this module.</p>
-<ul class="simple">
-<li>3PAR OS - 3.2.2 MU6, 3.3.1 MU1</li>
-<li>Ansible - 2.4</li>
-<li>hpe3par_sdk 1.0.0</li>
-<li>WSAPI service should be enabled on the 3PAR storage array.</li>
-</ul>
-</div>
-</div>
-<div class="section" id="parameters">
-<h2><a class="toc-backref" href="#id3">Parameters</a><a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+source
+:   snap/hpe3par\_cpg.py
+
+orphan
+:   
+
+hpe3par\_cpg - Manage HPE 3PAR CPG
+==================================
+
+Synopsis
+--------
+
+-   Create and delete CPG on HPE 3PAR.
+
+### Requirements
+
+The below requirements are needed on the host that executes this module.
+
+-   3PAR OS - 3.2.2 MU6, 3.3.1 MU1
+-   Ansible - 2.4
+-   hpe3par\_sdk 1.0.0
+-   WSAPI service should be enabled on the 3PAR storage array.
+
+Parameters
+----------
+
 <table  border=0 cellpadding=0 class="documentation-table">
     <tr>
         <th colspan="1">Parameter</th>
@@ -30,180 +32,157 @@
     </tr>
                 <tr>
                                                             <td colspan="1">
-                <b>allow_remote_copy_parent</b>
-                <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                            <td>
-                                                                                                                                                                    <ul><b>Choices:</b>
-                                                                                                                                                            <li>no</li>
-                                                                                                                                                                                            <li>yes</li>
-                                                                                </ul>
-                                                                        </td>
-                                                            <td>
-                                                                    <div>Allows the promote operation to proceed even if the RW parent volume is currently in a Remote Copy volume group, if that group has not been started. If the Remote Copy group has been started, this command fails.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>base_volume_name</b>
-                                                                        </td>
-                            <td>
-                                                                                                                                                        </td>
-                                                            <td>
-                                                                    <div>Specifies the source volume.
-Required with action present</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>expiration_hours</b>
-                                                                        </td>
-                            <td>
-                                                                                                                                                                <b>Default:</b><br/><div style="color: blue">0</div>
-                                </td>
-                                                            <td>
-                                                                    <div>Specifies the relative time from the current time that the volume expires. Value is a positive integer and in the range of 1 to 43,800 hours, or 1825 days.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>expiration_time</b>
-                                                                        </td>
-                            <td>
-                                                                                                                                                        </td>
-                                                            <td>
-                                                                    <div>Specifies the relative time from the current time that the volume expires. Value is a positive integer and in the range of 1 to 43,800 hours, or 1825 days.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>expiration_unit</b>
-                                                                        </td>
-                            <td>
-                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                            <li><div style="color: blue"><b>Hours</b>&nbsp;&larr;</div></li>
-                                                                                                                                                                                            <li>Days</li>
-                                                                                </ul>
-                                                                        </td>
-                                                            <td>
-                                                                    <div>Unit of Expiration Time.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>new_name</b>
-                                                                        </td>
-                            <td>
-                                                                                                                                                        </td>
-                                                            <td>
-                                                                    <div>New name of the volume.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>new_schedule_name</b>
-                                                                        </td>
-                            <td>
-                                                                                                                                                        </td>
-                                                            <td>
-                                                                    <div>New Name of the schedule.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>priority</b>
-                                                                        </td>
-                            <td>
-                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                            <li>HIGH</li>
-                                                                                                                                                                                            <li>MEDIUM</li>
-                                                                                                                                                                                            <li>LOW</li>
-                                                                                </ul>
-                                                                        </td>
-                                                            <td>
-                                                                    <div>Does not apply to online promote operation or to stop promote operation.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>read_only</b>
-                <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                            <td>
-                                                                                                                                                                    <ul><b>Choices:</b>
-                                                                                                                                                            <li>no</li>
-                                                                                                                                                                                            <li>yes</li>
-                                                                                </ul>
-                                                                        </td>
-                                                            <td>
-                                                                    <div>Specifies that the copied volume is read-only. false(default) The volume is read/write.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>retention_hours</b>
-                                                                        </td>
-                            <td>
-                                                                                                                                                                <b>Default:</b><br/><div style="color: blue">0</div>
-                                </td>
-                                                            <td>
-                                                                    <div>Specifies the relative time from the current time that the volume expires. Value is a positive integer and in the range of 1 to 43,800 hours, or 1825 days.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>retention_time</b>
-                                                                        </td>
-                            <td>
-                                                                                                                                                        </td>
-                                                            <td>
-                                                                    <div>Specifies the relative time from the current time that the volume will expire. Value is a positive integer and in the range of 1 to 43,800 hours, or 1825 days.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>retention_unit</b>
-                                                                        </td>
-                            <td>
-                                                                                                                        <ul><b>Choices:</b>
-                                                                                                                                                            <li><div style="color: blue"><b>Hours</b>&nbsp;&larr;</div></li>
-                                                                                                                                                                                            <li>Days</li>
-                                                                                </ul>
-                                                                        </td>
-                                                            <td>
-                                                                    <div>Unit of Retention Time.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>rm_exp_time</b>
-                <br/><div style="font-size: small; color: red">bool</div>                                                        </td>
-                            <td>
-                                                                                                                                                                    <ul><b>Choices:</b>
-                                                                                                                                                            <li>no</li>
-                                                                                                                                                                                            <li>yes</li>
-                                                                                </ul>
-                                                                        </td>
-                                                            <td>
-                                                                    <div>Enables (false) or disables (true) resetting the expiration time. If false, and expiration time value is a positive number, then set.</div>
-                                                                            </td>
-        </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>schedule_name</b>
+                <b>cpg_name</b>
                                     <br/><div style="font-size: small; color: red">required</div>                                    </td>
                             <td>
                                                                                                                                                         </td>
                                                             <td>
-                                                                    <div>Name of the schedule.</div>
+                                                                    <div>Name of the CPG.</div>
                                                                             </td>
         </tr>
                             <tr>
                                                             <td colspan="1">
-                <b>snapshot_name</b>
-                                    <br/><div style="font-size: small; color: red">required</div>                                    </td>
+                <b>disk_type</b>
+                                                                        </td>
+                            <td>
+                                                                                                                        <ul><b>Choices:</b>
+                                                                                                                                                            <li>FC</li>
+                                                                                                                                                                                            <li>NL</li>
+                                                                                                                                                                                            <li>SSD</li>
+                                                                                </ul>
+                                                                        </td>
+                                                            <td>
+                                                                    <div>Specifies that physical disks must have the specified device type.</div>
+                                                                            </td>
+        </tr>
+                            <tr>
+                                                            <td colspan="1">
+                <b>domain</b>
+                                                                        </td>
                             <td>
                                                                                                                                                         </td>
                                                             <td>
-                                                                    <div>Specifies a snapshot volume name.</div>
+                                                                    <div>Specifies the name of the domain in which the object will reside.</div>
+                                                                            </td>
+        </tr>
+                            <tr>
+                                                            <td colspan="1">
+                <b>growth_increment</b>
+                                                                        </td>
+                            <td>
+                                                                                                                                                                <b>Default:</b><br/><div style="color: blue">-1.0</div>
+                                </td>
+                                                            <td>
+                                                                    <div>Specifies the growth increment the amount of logical disk storage created on each auto-grow operation.</div>
+                                                                            </td>
+        </tr>
+                            <tr>
+                                                            <td colspan="1">
+                <b>growth_increment_unit</b>
+                                                                        </td>
+                            <td>
+                                                                                                                        <ul><b>Choices:</b>
+                                                                                                                                                            <li>MiB</li>
+                                                                                                                                                                                            <li><div style="color: blue"><b>GiB</b>&nbsp;&larr;</div></li>
+                                                                                                                                                                                            <li>TiB</li>
+                                                                                </ul>
+                                                                        </td>
+                                                            <td>
+                                                                    <div>Unit of growth increment.</div>
+                                                                            </td>
+        </tr>
+                            <tr>
+                                                            <td colspan="1">
+                <b>growth_limit</b>
+                                                                        </td>
+                            <td>
+                                                                                                                                                                <b>Default:</b><br/><div style="color: blue">-1.0</div>
+                                </td>
+                                                            <td>
+                                                                    <div>Specifies that the autogrow operation is limited to the specified storage amount that sets the growth limit.</div>
+                                                                            </td>
+        </tr>
+                            <tr>
+                                                            <td colspan="1">
+                <b>growth_limit_unit</b>
+                                                                        </td>
+                            <td>
+                                                                                                                        <ul><b>Choices:</b>
+                                                                                                                                                            <li>MiB</li>
+                                                                                                                                                                                            <li><div style="color: blue"><b>GiB</b>&nbsp;&larr;</div></li>
+                                                                                                                                                                                            <li>TiB</li>
+                                                                                </ul>
+                                                                        </td>
+                                                            <td>
+                                                                    <div>Unit of growth limit.</div>
+                                                                            </td>
+        </tr>
+                            <tr>
+                                                            <td colspan="1">
+                <b>growth_warning</b>
+                                                                        </td>
+                            <td>
+                                                                                                                                                                <b>Default:</b><br/><div style="color: blue">-1.0</div>
+                                </td>
+                                                            <td>
+                                                                    <div>Specifies that the threshold of used logical disk space when exceeded results in a warning alert.</div>
+                                                                            </td>
+        </tr>
+                            <tr>
+                                                            <td colspan="1">
+                <b>growth_warning_unit</b>
+                                                                        </td>
+                            <td>
+                                                                                                                        <ul><b>Choices:</b>
+                                                                                                                                                            <li>MiB</li>
+                                                                                                                                                                                            <li><div style="color: blue"><b>GiB</b>&nbsp;&larr;</div></li>
+                                                                                                                                                                                            <li>TiB</li>
+                                                                                </ul>
+                                                                        </td>
+                                                            <td>
+                                                                    <div>Unit of growth warning.</div>
+                                                                            </td>
+        </tr>
+                            <tr>
+                                                            <td colspan="1">
+                <b>high_availability</b>
+                                                                        </td>
+                            <td>
+                                                                                                                        <ul><b>Choices:</b>
+                                                                                                                                                            <li>PORT</li>
+                                                                                                                                                                                            <li>CAGE</li>
+                                                                                                                                                                                            <li>MAG</li>
+                                                                                </ul>
+                                                                        </td>
+                                                            <td>
+                                                                    <div>Specifies that the layout must support the failure of one port pair, one cage, or one magazine.</div>
+                                                                            </td>
+        </tr>
+                            <tr>
+                                                            <td colspan="1">
+                <b>raid_type</b>
+                                                                        </td>
+                            <td>
+                                                                                                                        <ul><b>Choices:</b>
+                                                                                                                                                            <li>R0</li>
+                                                                                                                                                                                            <li>R1</li>
+                                                                                                                                                                                            <li>R5</li>
+                                                                                                                                                                                            <li>R6</li>
+                                                                                </ul>
+                                                                        </td>
+                                                            <td>
+                                                                    <div>Specifies the RAID type for the logical disk.</div>
+                                                                            </td>
+        </tr>
+                            <tr>
+                                                            <td colspan="1">
+                <b>set_size</b>
+                                                                        </td>
+                            <td>
+                                                                                                                                                                <b>Default:</b><br/><div style="color: blue">-1</div>
+                                </td>
+                                                            <td>
+                                                                    <div>Specifies the set size in the number of chunklets.</div>
                                                                             </td>
         </tr>
                             <tr>
@@ -214,18 +193,10 @@ Required with action present</div>
                                                                                                                         <ul><b>Choices:</b>
                                                                                                                                                             <li>present</li>
                                                                                                                                                                                             <li>absent</li>
-                                                                                                                                                                                            <li>modify</li>
-                                                                                                                                                                                            <li>create_schedule</li>
-                                                                                                                                                                                            <li>delete_schedule</li>
-                                                                                                                                                                                            <li>modify_schedule</li>
-                                                                                                                                                                                            <li>suspend_schedule</li>
-                                                                                                                                                                                            <li>resume_schedule</li>
-                                                                                                                                                                                            <li>restore_offline</li>
-                                                                                                                                                                                            <li>restore_online</li>
                                                                                 </ul>
                                                                         </td>
                                                             <td>
-                                                                    <div>Whether the specified Snapshot should exist or not. State also provides actions to modify and restore snapshots.</div>
+                                                                    <div>Whether the specified CPG should exist or not.</div>
                                                                             </td>
         </tr>
                             <tr>
@@ -258,83 +229,63 @@ Required with action present</div>
                                                                     <div>The storage system user name.</div>
                                                                             </td>
         </tr>
-                            <tr>
-                                                            <td colspan="1">
-                <b>task_freq</b>
-                                                                        </td>
-                            <td>
-                                                                                                                                                        </td>
-                                                            <td>
-                                                                    <div>Frequency as special string for the schedule to be created.</div>
-                                                                            </td>
-        </tr>
                     </table>
-<br/></div>
-<div class="section" id="examples">
-<h2><a class="toc-backref" href="#id4">Examples</a><a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml+jinja notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Create Volume snasphot my_ansible_snapshot</span>
-  <span class="nt">hpe3par_snapshot</span><span class="p">:</span>
-    <span class="nt">storage_system_ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.10.10.1</span>
-    <span class="nt">storage_system_username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">username</span>
-    <span class="nt">storage_system_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password</span>
-    <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
-    <span class="nt">snapshot_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">snap-volume</span>
-    <span class="nt">base_volume_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test_volume</span>
-    <span class="nt">read_only</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Restore offline Volume snasphot my_ansible_snapshot</span>
-  <span class="nt">hpe3par_snapshot</span><span class="p">:</span>
-    <span class="nt">storage_system_ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.10.10.1</span>
-    <span class="nt">storage_system_username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">username</span>
-    <span class="nt">storage_system_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password</span>
-    <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">restore_offline</span>
-    <span class="nt">snapshot_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">snap-volume</span>
-    <span class="nt">priority</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">MEDIUM</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Restore offline Volume snasphot my_ansible_snapshot</span>
-  <span class="nt">hpe3par_snapshot</span><span class="p">:</span>
-    <span class="nt">storage_system_ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.10.10.1</span>
-    <span class="nt">storage_system_username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">username</span>
-    <span class="nt">storage_system_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password</span>
-    <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">restore_online</span>
-    <span class="nt">snapshot_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">snap-volume</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Modify/rename snasphot my_ansible_snapshot</span>
-        <span class="l l-Scalar l-Scalar-Plain">to my_ansible_snapshot_renamed</span>
-  <span class="nt">hpe3par_snapshot</span><span class="p">:</span>
-    <span class="nt">storage_system_ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.10.10.1</span>
-    <span class="nt">storage_system_username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">username</span>
-    <span class="nt">storage_system_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password</span>
-    <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">modify</span>
-    <span class="nt">snapshot_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">snap-volume</span>
-    <span class="nt">new_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">snapshot-volume</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Delete snasphot my_ansible_snapshot_renamed</span>
-  <span class="nt">hpe3par_snapshot</span><span class="p">:</span>
-    <span class="nt">storage_system_ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.10.10.1</span>
-    <span class="nt">storage_system_username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">username</span>
-    <span class="nt">storage_system_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password</span>
-    <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">absent</span>
-    <span class="nt">snapshot_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">snap-volume</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Create schedule my_ansible_sc</span>
-  <span class="nt">hpe3par_snapshot</span><span class="p">:</span>
-    <span class="nt">storage_system_ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.10.10.1</span>
-    <span class="nt">storage_system_username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">username</span>
-    <span class="nt">storage_system_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password</span>
-    <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">create_schedule</span>
-    <span class="nt">schedule_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my_ansible_sc</span>
-    <span class="nt">base_volume_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test_volume</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Modify schedule my_ansible_sc</span>
-  <span class="nt">hpe3par_snapshot</span><span class="p">:</span>
-    <span class="nt">storage_system_ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.10.10.1</span>
-    <span class="nt">storage_system_username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">username</span>
-    <span class="nt">storage_system_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password</span>
-    <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">create_schedule</span>
-    <span class="nt">schedule_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my_ansible_sc</span>
-    <span class="nt">new_schedule_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test_ansible_sc</span>
-<span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Delete schedule my_ansible_sc</span>
-  <span class="nt">hpe3par_snapshot</span><span class="p">:</span>
-    <span class="nt">storage_system_ip</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">10.10.10.1</span>
-    <span class="nt">storage_system_username</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">username</span>
-    <span class="nt">storage_system_password</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">password</span>
-    <span class="nt">state</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">delete_schedule</span>
-    <span class="nt">schedule_name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">my_ansible_sc</span>
-</pre></div>
-</div>
-</div>
+<br/>
+Examples
+--------
+
+``` {.sourceCode .yaml+jinja}
+- name: Create CPG "{{ cpg_name }}"
+  hpe3par_cpg:
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=present
+    cpg_name="{{ cpg_name }}"
+    domain="{{ domain }}"
+    growth_increment="{{ growth_increment }}"
+    growth_increment_unit="{{ growth_increment_unit }}"
+    growth_limit="{{ growth_limit }}"
+    growth_limit_unit="{{ growth_limit_unit }}"
+    growth_warning="{{ growth_warning }}"
+    growth_warning_unit="{{ growth_warning_unit }}"
+    raid_type="{{ raid_type }}"
+    set_size="{{ set_size }}"
+    high_availability="{{ high_availability }}"
+    disk_type="{{ disk_type }}"
+
+- name: Delete CPG "{{ cpg_name }}"
+  hpe3par_cpg:
+    storage_system_ip="{{ storage_system_ip }}"
+    storage_system_username="{{ storage_system_username }}"
+    storage_system_password="{{ storage_system_password }}"
+    state=absent
+    cpg_name="{{ cpg_name }}"
+```
+
+Status
+------
+
+This module is flagged as **preview** which means that it is not
+guaranteed to have a backwards compatible interface.
+
+Maintenance
+-----------
+
+This module is flagged as **community** which means that it is
+maintained by the Ansible Community. See
+Module Maintenance & Support \<modules\_support\> for more info.
+
+For a list of other modules that are also maintained by the Ansible
+Community, see here \<community\_supported\>.
+
+### Author
+
+-   Hewlett Packard Enterprise (<ecostor@groups.ext.hpe.com>)
+
+> **hint**
+>
+> If you notice any issues in this documentation you can [edit this
+> document](https://github.com/ansible/ansible/edit/devel/lib/ansible/modules/snap/hpe3par_cpg.py?description=%3C!---%20Your%20description%20here%20--%3E%0A%0A%2Blabel:%20docsite_pr)
+> to improve it.
+
