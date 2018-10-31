@@ -2441,6 +2441,8 @@ Examples
 
 -   Farhan Nomani (<nomani@hpe.com>)
 
+-   Nirupama Nirmal (<nirupama-nirmal.nirmal@hpe.com>)
+
 source
 
 :   hpe3par\_vlun.py
